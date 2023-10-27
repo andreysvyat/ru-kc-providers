@@ -56,4 +56,8 @@ public class VKIdentityProviderConfig
         return getConfig().get("fetchedFields");
     }
 
+    public String getVkIdpName() {
+        return getConfig().get("vkIdpName");
+    }
+
 }

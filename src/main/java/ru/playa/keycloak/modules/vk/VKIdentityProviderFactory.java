@@ -8,6 +8,7 @@ import org.keycloak.provider.ProviderConfigProperty;
 import org.keycloak.provider.ProviderConfigurationBuilder;
 
 import java.util.List;
+import java.util.concurrent.atomic.AtomicInteger;
 
 /**
  * Фабрика OAuth-авторизации через <a href="https://vk.com">ВКонтакте</a>.
@@ -22,6 +23,7 @@ public class VKIdentityProviderFactory
      * Уникальный идентификатор провайдера.
      */
     public static final String PROVIDER_ID = "vk";
+	private static final AtomicInteger IDPS_COUNTER = new AtomicInteger();
 
     @Override
     public String getName() {
@@ -41,6 +43,10 @@ public class VKIdentityProviderFactory
     @Override
     public List<ProviderConfigProperty> getConfigProperties() {
         return ProviderConfigurationBuilder.create()
+                .property()
+                .name("vkIdpName")
+                .label("Vk IDP name")
+                .add()
                 .property()
                 .name("version")
                 .label("Version VK API")
@@ -65,6 +71,6 @@ public class VKIdentityProviderFactory
 
     @Override
     public String getId() {
-        return PROVIDER_ID;
+        return PROVIDER_ID + IDPS_COUNTER.getAndIncrement();
     }
 }
