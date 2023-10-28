@@ -1,0 +1,1 @@
+docker run --name kc_12_0_1 -p 9112:8080 -p 9990:9990 -e KEYCLOACK_USER=admin -e KEYCLOAK_PASSWORD=admin kc:12.0.1
