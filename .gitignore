@@ -5,3 +5,5 @@ target/
 /docker-compose.yml
 /keycloak-russian.iml
 /log
+.gradle/
+build/
